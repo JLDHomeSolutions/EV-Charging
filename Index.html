@@ -1,74 +1,153 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>EV Charging for Property Owners</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EV Charging for Property Owners | JLD Home Solutions</title>
 <style>
-body {
-font-family: Arial;
-background:#f4f6f9;
-margin:0;
-text-align:center;
-}
-
-.header{
-background:#1f3c6d;
-color:white;
-padding:40px;
-}
-
-.section{
-padding:40px;
-max-width:800px;
-margin:auto;
-}
-
-.button{
-background:#2a7de1;
-color:white;
-padding:15px 30px;
-font-size:18px;
-text-decoration:none;
-border-radius:6px;
-}
-
-ul{
-text-align:left;
-display:inline-block;
-}
+body{font-family:Arial,Helvetica,sans-serif;margin:0;background:#f5f7fb;color:#1b1b1b}
+header{background:#1f3c6d;color:white;padding:60px 20px;text-align:center}
+h1{margin:0;font-size:42px}
+h2{color:#1f3c6d}
+section{padding:50px 20px;max-width:1000px;margin:auto}
+.hero-sub{font-size:20px;margin-top:10px}
+.button{display:inline-block;background:#2a7de1;color:white;padding:16px 32px;border-radius:8px;text-decoration:none;font-size:18px;margin-top:20px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:25px;margin-top:30px}
+.card{background:white;padding:25px;border-radius:10px;box-shadow:0 5px 15px rgba(0,0,0,0.08)}
+.benefits li{margin:10px 0}
+.roi{background:#ffffff;padding:30px;border-radius:10px;box-shadow:0 5px 15px rgba(0,0,0,0.1)}
+input{padding:12px;width:100%;margin:10px 0;border-radius:6px;border:1px solid #ccc}
+.calc-btn{background:#1f3c6d;color:white;padding:12px;border:none;border-radius:6px;width:100%;font-size:16px}
+.result{font-size:22px;margin-top:15px;font-weight:bold}
+footer{background:#1f3c6d;color:white;text-align:center;padding:30px;margin-top:40px}
 </style>
 </head>
 
 <body>
 
-<div class="header">
+<header>
 <h1>Install EV Charging at Your Property</h1>
-<p>Turn parking spaces into revenue</p>
+<p class="hero-sub">Turn parking spaces into a recurring revenue stream</p>
+<a class="button" href="tel:2035728680">Schedule Free Property Assessment</a>
+</header>
+
+<section>
+<h2>Why Property Owners Install EV Charging</h2>
+
+<div class="grid">
+<div class="card">
+<h3>Increase Property Value</h3>
+<p>EV charging is one of the most requested amenities for modern apartments and condos.</p>
 </div>
 
-<div class="section">
+<div class="card">
+<h3>Attract Higher Quality Tenants</h3>
+<p>Electric vehicle drivers actively search for properties with charging available.</p>
+</div>
 
-<h2>Benefits for Property Owners</h2>
+<div class="card">
+<h3>Create Passive Income</h3>
+<p>Charge drivers per kWh or per session and generate monthly revenue.</p>
+</div>
 
-<ul>
-<li>Increase property value</li>
-<li>Attract and retain tenants</li>
-<li>Generate passive income</li>
-<li>Future-proof your property</li>
+<div class="card">
+<h3>Future‑Proof Your Property</h3>
+<p>EV adoption is growing rapidly and many states are pushing for EV infrastructure.</p>
+</div>
+</div>
+</section>
+
+<section>
+<h2>Ideal Properties</h2>
+<ul class="benefits">
+<li>Apartment Buildings</li>
+<li>Multi‑Family Housing</li>
+<li>Condo Associations</li>
+<li>Commercial Parking Lots</li>
+<li>Mixed‑Use Developments</li>
 </ul>
+</section>
 
-<br><br>
+<section>
+<h2>EV Charging Revenue Calculator</h2>
 
-<h2>Free Property Assessment</h2>
+<div class="roi">
 
-<p>We evaluate your parking area and design a custom EV charging plan.</p>
+<label>Number of Chargers</label>
+<input id="chargers" type="number" placeholder="Example: 4">
 
-<a class="button" href="tel:2035728680">Call Now</a>
+<label>Average Charging Sessions Per Day</label>
+<input id="sessions" type="number" placeholder="Example: 6">
 
-<br><br>
+<label>Average Revenue Per Session ($)</label>
+<input id="price" type="number" placeholder="Example: 8">
 
-<p>Email: jldhomesolutions@gmail.com</p>
+<button class="calc-btn" onclick="calculateROI()">Calculate Monthly Revenue</button>
+
+<div id="result" class="result"></div>
 
 </div>
+</section>
+
+<section>
+<h2>How JLD Home Solutions Helps</h2>
+
+<div class="grid">
+<div class="card">
+<h3>Site Evaluation</h3>
+<p>We analyze your electrical capacity and parking layout.</p>
+</div>
+
+<div class="card">
+<h3>Utility Incentives</h3>
+<p>We help identify rebates and programs that reduce installation cost.</p>
+</div>
+
+<div class="card">
+<h3>Professional Installation</h3>
+<p>Licensed installation and system setup for residential and commercial properties.</p>
+</div>
+
+<div class="card">
+<h3>Ongoing Support</h3>
+<p>Maintenance and operational support to keep chargers running smoothly.</p>
+</div>
+</div>
+
+</section>
+
+<section style="text-align:center">
+<h2>Schedule a Free Property Assessment</h2>
+<p>We will evaluate your parking area and design a custom EV charging plan.</p>
+
+<a class="button" href="tel:2035728680">Call (203) 572‑8680</a>
+
+<p style="margin-top:20px">Email: jldhomesolutions@gmail.com</p>
+</section>
+
+<footer>
+<p>JLD Home Solutions | Bridgeport, Connecticut</p>
+</footer>
+
+<script>
+function calculateROI(){
+
+let chargers = document.getElementById('chargers').value
+let sessions = document.getElementById('sessions').value
+let price = document.getElementById('price').value
+
+let monthly = chargers * sessions * price * 30
+
+if(monthly){
+
+ document.getElementById('result').innerText =
+ "Estimated Monthly Revenue: $" + monthly.toLocaleString()
+
+}
+
+}
+</script>
 
 </body>
 </html>
+

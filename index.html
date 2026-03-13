@@ -4,262 +4,372 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>EV Charging for Property Owners | JLD Home Solutions</title>
-
 <style>
-body{font-family:Arial,Helvetica,sans-serif;margin:0;background:#eef2f7;color:#1b1b1b}
-
+:root{
+  --navy:#1f3c6d;
+  --navy-dark:#163159;
+  --blue:#2a7de1;
+  --light:#eef2f7;
+  --card:#ffffff;
+  --text:#1b1b1b;
+  --muted:#5a6475;
+}
+*{box-sizing:border-box}
+body{font-family:Arial,Helvetica,sans-serif;margin:0;background:var(--light);color:var(--text);line-height:1.5}
 .hero{
-background:url('https://images.unsplash.com/photo-1619767886558-efdc259cde1a?q=80&w=2070&auto=format&fit=crop') center/cover no-repeat;
-height:520px;
-display:flex;
-align-items:center;
-justify-content:center;
-text-align:center;
-color:white;
-position:relative;
+  background:linear-gradient(180deg,#17335c 0%, #23487b 100%);
+  color:white;
+  padding:48px 20px 36px;
 }
-
-.hero::after{
-content:"";
-position:absolute;
-background:rgba(10,35,70,0.75);
-top:0;left:0;right:0;bottom:0;
+.hero-wrap{
+  max-width:1180px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:1.15fr .85fr;
+  gap:28px;
+  align-items:center;
 }
-
-.hero-content{
-position:relative;
-max-width:800px;
-padding:20px;
+.hero-copy h1{font-size:52px;line-height:1.02;margin:0 0 14px;font-weight:800;letter-spacing:.3px}
+.hero-copy p{font-size:22px;margin:0 0 18px;color:#e8eef8}
+.eyebrow{font-size:15px;font-weight:700;letter-spacing:1px;text-transform:uppercase;opacity:.95;margin-bottom:14px}
+.hero-points{display:flex;flex-wrap:wrap;gap:12px 18px;margin:18px 0 0;padding:0;list-style:none;color:#f4f8ff}
+.hero-points li{font-size:16px}
+.cta-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:24px}
+.cta,.secondary-cta{
+  padding:15px 24px;border-radius:10px;text-decoration:none;font-size:17px;font-weight:700;display:inline-block
 }
-
-.hero h1{font-size:46px;margin:0}
-.hero p{font-size:20px;margin-top:15px}
-
-.cta{
-background:#2a7de1;
-padding:16px 30px;
-border-radius:8px;
-color:white;
-text-decoration:none;
-font-size:18px;
-display:inline-block;
-margin-top:25px;
+.cta{background:var(--blue);color:white}
+.secondary-cta{background:white;color:var(--navy)}
+.flyer-card{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:22px;padding:14px;backdrop-filter:blur(3px);box-shadow:0 20px 40px rgba(0,0,0,.22)}
+.flyer-card img{display:block;width:100%;height:auto;border-radius:14px;background:#dfe6f2}
+.flyer-note{font-size:13px;color:#dfe8f8;margin-top:10px;text-align:center}
+section{max-width:1180px;margin:auto;padding:54px 20px}
+h2{color:var(--navy);margin:0 0 14px;font-size:34px}
+.section-intro{max-width:760px;color:var(--muted);margin-bottom:24px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px}
+.card{background:var(--card);padding:24px;border-radius:18px;box-shadow:0 8px 24px rgba(16,30,54,.08)}
+.card h3{margin:0 0 10px;color:var(--navy);font-size:22px}
+.kicker{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:#5f7fb4;margin-bottom:10px}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start}
+.roi-box,.report-box,.planner-box,.map-box{background:white;padding:28px;border-radius:18px;box-shadow:0 8px 24px rgba(16,30,54,.08)}
+label{display:block;font-weight:700;margin-top:14px;color:var(--navy)}
+input,select{padding:13px;width:100%;margin-top:8px;border-radius:10px;border:1px solid #cfd8e6;font-size:16px;background:white}
+button{background:var(--navy);color:white;padding:14px;border:none;border-radius:10px;width:100%;font-size:16px;font-weight:700;margin-top:18px;cursor:pointer}
+button:hover{background:var(--navy-dark)}
+.result{font-size:24px;margin-top:16px;font-weight:800;color:var(--navy)}
+.small-note{font-size:14px;color:var(--muted);margin-top:10px}
+.example-banner{background:linear-gradient(135deg,#214576,#2c6ed3);color:white;border-radius:18px;padding:28px;box-shadow:0 12px 28px rgba(18,37,67,.16)}
+.example-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:18px}
+.example-stat{background:rgba(255,255,255,.12);padding:16px;border-radius:14px;text-align:center}
+.example-stat strong{display:block;font-size:28px;margin-top:6px}
+.form-section{background:linear-gradient(180deg,#17335c,#214576);color:white;text-align:center;padding:64px 20px;margin-top:8px}
+.form-inner{max-width:900px;margin:auto}
+.form-btn{background:#2a7de1;color:white;padding:18px 34px;font-size:20px;border-radius:10px;text-decoration:none;display:inline-block;margin-top:22px;font-weight:700}
+.checklist{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;max-width:860px;margin:28px auto 0;text-align:left}
+.checklist .item{background:rgba(255,255,255,.1);padding:16px;border-radius:14px}
+.parking-planner{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;max-width:640px;margin-top:20px}
+.spot{background:#dbe3ef;height:66px;border-radius:8px;cursor:pointer;border:2px solid transparent;position:relative}
+.spot::after{content:"P";position:absolute;inset:0;display:grid;place-items:center;color:#6a7688;font-weight:700}
+.spot.active{background:#2a7de1;border-color:#163159}
+.spot.active::after{content:"EV";color:white}
+.planner-stats{display:flex;gap:14px;flex-wrap:wrap;margin-top:16px}
+.stat-pill{background:#eef4ff;color:var(--navy);padding:10px 14px;border-radius:999px;font-weight:700}
+.map-frame{width:100%;height:430px;border:0;border-radius:16px;background:#dfe6f2}
+.report-output{display:none;margin-top:22px;background:#f6f9ff;border:1px solid #d8e4fb;border-radius:14px;padding:18px}
+.report-output h3{margin:0 0 10px;color:var(--navy)}
+.cta-strip{display:grid;grid-template-columns:1fr auto;gap:18px;align-items:center;background:white;padding:26px;border-radius:18px;box-shadow:0 8px 24px rgba(16,30,54,.08)}
+footer{background:#1f3c6d;color:white;text-align:center;padding:34px 20px;margin-top:40px}
+footer p{margin:6px 0}
+@media (max-width:900px){
+  .hero-wrap,.two-col{grid-template-columns:1fr}
+  .hero-copy h1{font-size:40px}
+  .example-grid{grid-template-columns:repeat(2,1fr)}
 }
-
-section{max-width:1100px;margin:auto;padding:50px 20px}
-
-h2{color:#1f3c6d;margin-bottom:15px}
-
-.grid{
-display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:25px;margin-top:25px}
-
-.card{background:white;padding:25px;border-radius:10px;box-shadow:0 6px 18px rgba(0,0,0,0.08)}
-
-.roi-box{background:white;padding:30px;border-radius:10px;box-shadow:0 6px 18px rgba(0,0,0,0.1);max-width:500px}
-
-input{padding:12px;width:100%;margin:10px 0;border-radius:6px;border:1px solid #ccc}
-
-button{background:#1f3c6d;color:white;padding:12px;border:none;border-radius:6px;width:100%;font-size:16px}
-
-.result{font-size:22px;margin-top:15px;font-weight:bold}
-
-.form-section{background:#1f3c6d;color:white;text-align:center;padding:60px 20px}
-
-.form-btn{background:#2a7de1;color:white;padding:18px 36px;font-size:20px;border-radius:8px;text-decoration:none;display:inline-block;margin-top:25px}
-
-.parking-planner{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;max-width:600px;margin-top:20px}
-
-.spot{background:#d6dce5;height:60px;border-radius:4px;cursor:pointer}
-
-.spot.active{background:#2a7de1}
-
-.map-container iframe{width:100%;height:400px;border:0;border-radius:10px}
-
-footer{background:#1f3c6d;color:white;text-align:center;padding:30px;margin-top:40px}
-
+@media (max-width:640px){
+  .hero-copy h1{font-size:34px}
+  h2{font-size:28px}
+  .parking-planner{grid-template-columns:repeat(3,1fr)}
+  .cta-strip{grid-template-columns:1fr}
+}
 </style>
 </head>
-
 <body>
 
 <div class="hero">
-<div class="hero-content">
-
-<h1>Install EV Charging At Your Property</h1>
-<p>Turn your parking spaces into a revenue stream</p>
-
-<a class="cta" href="tel:2035728680">Schedule Free Property Assessment</a>
-
-</div>
+  <div class="hero-wrap">
+    <div class="hero-copy">
+      <div class="eyebrow">JLD Home Solutions • Connecticut Property Owners</div>
+      <h1>Install EV Charging At Your Property</h1>
+      <p>Turn your parking spaces into a revenue stream.</p>
+      <div class="cta-row">
+        <a class="cta" href="https://form.jotform.com/260674913599068" target="_blank">Check Incentive Eligibility</a>
+        <a class="secondary-cta" href="tel:2035728680">Call (203) 572-8680</a>
+      </div>
+      <ul class="hero-points">
+        <li>Increase property value</li>
+        <li>Attract tenants</li>
+        <li>No-hassle installation</li>
+        <li>Utility incentive guidance</li>
+      </ul>
+    </div>
+    <div class="flyer-card">
+      <img src="flyer.jpg" alt="JLD Home Solutions EV charging flyer">
+      <div class="flyer-note">Upload your flyer image to your GitHub repo as <strong>flyer.jpg</strong> so this section matches your flyer exactly.</div>
+    </div>
+  </div>
 </div>
 
 <section>
-<h2>Why Property Owners Install EV Charging</h2>
-
-<div class="grid">
-
-<div class="card">
-<h3>Increase Property Value</h3>
-<p>EV charging is quickly becoming a must-have amenity for modern buildings.</p>
-</div>
-
-<div class="card">
-<h3>Attract Tenants</h3>
-<p>Electric vehicle drivers search for apartments with charging available.</p>
-</div>
-
-<div class="card">
-<h3>Generate Passive Income</h3>
-<p>Charge drivers per session and create recurring monthly revenue.</p>
-</div>
-
-<div class="card">
-<h3>Future Proof Your Property</h3>
-<p>EV adoption is growing rapidly across the country.</p>
-</div>
-
-</div>
-
+  <h2>Why Property Owners Install EV Charging</h2>
+  <p class="section-intro">Give owners a clear reason to keep scrolling: new revenue, stronger tenant appeal, and a property that is better positioned for the future.</p>
+  <div class="grid">
+    <div class="card">
+      <div class="kicker">Value</div>
+      <h3>Increase Property Value</h3>
+      <p>EV charging is becoming a high-demand amenity for modern apartment, condo, and mixed-use properties.</p>
+    </div>
+    <div class="card">
+      <div class="kicker">Retention</div>
+      <h3>Attract & Retain Tenants</h3>
+      <p>Drivers want the convenience of charging where they live or park regularly.</p>
+    </div>
+    <div class="card">
+      <div class="kicker">Revenue</div>
+      <h3>Create Passive Income</h3>
+      <p>Charge by session or usage and create recurring monthly revenue from existing parking spaces.</p>
+    </div>
+    <div class="card">
+      <div class="kicker">Future Ready</div>
+      <h3>Prepare for EV Demand</h3>
+      <p>Position your property for long-term EV adoption and evolving resident expectations.</p>
+    </div>
+  </div>
 </section>
 
 <section>
+  <div class="two-col">
+    <div class="roi-box">
+      <h2>EV Charging Revenue Calculator</h2>
+      <p class="section-intro">Let owners see the income potential immediately.</p>
+      <label>Number of Chargers</label>
+      <input id="chargers" type="number" placeholder="Example: 6">
+      <label>Charging Sessions Per Day</label>
+      <input id="sessions" type="number" placeholder="Example: 8">
+      <label>Average Revenue Per Session ($)</label>
+      <input id="price" type="number" placeholder="Example: 8">
+      <button onclick="calcROI()">Calculate Monthly Revenue</button>
+      <div id="roiResult" class="result"></div>
+      <div class="small-note">Estimate only. Actual usage depends on property type, charger count, pricing, and traffic.</div>
+    </div>
 
-<h2>EV Charging Revenue Calculator</h2>
-
-<div class="roi-box">
-
-<label>Number of Chargers</label>
-<input id="chargers" type="number" placeholder="Example: 6">
-
-<label>Charging Sessions Per Day</label>
-<input id="sessions" type="number" placeholder="Example: 8">
-
-<label>Average Revenue Per Session ($)</label>
-<input id="price" type="number" placeholder="Example: 8">
-
-<button onclick="calcROI()">Calculate Monthly Revenue</button>
-
-<div id="roiResult" class="result"></div>
-
-</div>
-
+    <div class="report-box">
+      <h2>Connecticut Incentive Lookup</h2>
+      <p class="section-intro">This quick checker tees up the full form and helps owners self-identify whether they may qualify.</p>
+      <label>Property Type</label>
+      <select id="propertyType">
+        <option value="">Select property type</option>
+        <option>Apartment Building</option>
+        <option>Condo Association</option>
+        <option>Commercial Parking Lot</option>
+        <option>Mixed-Use Property</option>
+        <option>Other</option>
+      </select>
+      <label>Utility Provider</label>
+      <select id="utilityProvider">
+        <option value="">Select utility provider</option>
+        <option>Eversource</option>
+        <option>UI</option>
+        <option>Other / Unknown</option>
+      </select>
+      <label>Existing Electrical Capacity</label>
+      <select id="panelReady">
+        <option value="">Select one</option>
+        <option>Panel looks updated / newer</option>
+        <option>Not sure</option>
+        <option>Older panel / may need upgrade</option>
+      </select>
+      <button onclick="checkIncentives()">Check Potential Qualification</button>
+      <div id="incentiveResult" class="report-output"></div>
+    </div>
+  </div>
 </section>
 
 <section>
-
-<h2>Apartment Complex Profit Example</h2>
-
-<div class="card">
-
-<p><b>Example Scenario</b></p>
-
-<ul>
-<li>6 Level 2 chargers</li>
-<li>8 charging sessions per day</li>
-<li>$8 per session</li>
-</ul>
-
-<p style="font-size:22px"><b>$11,520 Estimated Monthly Revenue</b></p>
-
-</div>
-
+  <div class="example-banner">
+    <div class="kicker" style="color:#dbe7ff">Apartment Complex Profit Example</div>
+    <h2 style="color:white;margin:0 0 10px">See What EV Charging Could Produce</h2>
+    <p style="margin:0;color:#edf3ff">Example scenario for a multi-family property.</p>
+    <div class="example-grid">
+      <div class="example-stat">Chargers<strong>6</strong></div>
+      <div class="example-stat">Sessions / Day<strong>8</strong></div>
+      <div class="example-stat">Revenue / Session<strong>$8</strong></div>
+      <div class="example-stat">Estimated / Month<strong>$11,520</strong></div>
+    </div>
+  </div>
 </section>
 
 <section>
+  <div class="two-col">
+    <div class="planner-box">
+      <h2>Interactive Parking Lot Charger Planner</h2>
+      <p class="section-intro">Click spaces to visualize where EV charging could be installed.</p>
+      <div class="parking-planner" id="planner"></div>
+      <div class="planner-stats">
+        <div class="stat-pill">Selected EV Spaces: <span id="selectedCount">0</span></div>
+        <div class="stat-pill">Suggested Chargers: <span id="chargerCount">0</span></div>
+      </div>
+    </div>
 
-<h2>Interactive Parking Lot Charger Planner</h2>
-
-<p>Click parking spaces to visualize where chargers could be installed.</p>
-
-<div class="parking-planner" id="planner"></div>
-
-</section>
-
-<section>
-
-<h2>EV Growth in Connecticut</h2>
-
-<div class="map-container">
-
-<iframe src="https://www.google.com/maps/d/embed?mid=1iI-ctEVgrowthmap"></iframe>
-
-</div>
-
+    <div class="map-box">
+      <h2>Connecticut Service Area Map</h2>
+      <p class="section-intro">Use this map section to reinforce that you serve Connecticut property owners.</p>
+      <iframe class="map-frame" src="https://www.openstreetmap.org/export/embed.html?bbox=-73.727%2C40.980%2C-71.786%2C42.250&layer=mapnik"></iframe>
+      <div class="small-note">You can later replace this with a custom Connecticut EV demand map or a screenshot from your preferred data source.</div>
+    </div>
+  </div>
 </section>
 
 <div class="form-section">
-
-<h2>Check If Your Property Qualifies For EV Incentives</h2>
-
-<p>Upload your electrical panel photo and last 3 electric bills to see if you qualify.</p>
-
-<a class="form-btn" href="https://form.jotform.com/260674913599068" target="_blank">
-Check Incentive Eligibility
-</a>
-
+  <div class="form-inner">
+    <h2 style="color:white">Check If Your Property Qualifies For EV Incentives</h2>
+    <p>Complete the assessment form and upload the items below so we can review your property faster.</p>
+    <div class="checklist">
+      <div class="item">✔ Property contact information</div>
+      <div class="item">✔ Photo of the electrical panel</div>
+      <div class="item">✔ Photos of the last 3 electric bills</div>
+      <div class="item">✔ Basic property details and parking information</div>
+    </div>
+    <a class="form-btn" href="https://form.jotform.com/260674913599068" target="_blank">Start Incentive Qualification Form</a>
+    <div class="small-note" style="color:#dce7fb;margin-top:18px">Automatic email notifications come from your Jotform settings, not this page.</div>
+  </div>
 </div>
 
 <section>
+  <div class="two-col">
+    <div class="report-box">
+      <h2>Get Your Property EV Report</h2>
+      <p class="section-intro">Generate a simple on-page report the owner can review or print.</p>
+      <label>Property Name</label>
+      <input id="reportName" type="text" placeholder="Example: Harbor View Apartments">
+      <label>City</label>
+      <input id="reportCity" type="text" placeholder="Example: Bridgeport">
+      <label>Total Parking Spaces</label>
+      <input id="reportSpaces" type="number" placeholder="Example: 48">
+      <label>Estimated Number of EV-Ready Spaces</label>
+      <input id="reportEvSpaces" type="number" placeholder="Example: 6">
+      <button onclick="generateReport()">Generate EV Property Report</button>
+      <div id="reportOutput" class="report-output"></div>
+      <button id="printBtn" onclick="window.print()" style="display:none">Print / Save as PDF</button>
+    </div>
 
-<h2>Connecticut EV Incentives</h2>
+    <div class="card">
+      <div class="kicker">Lead Capture</div>
+      <h3>Automatic Email Notifications</h3>
+      <p>Your website button already sends visitors to your Jotform. To email yourself automatically after every submission, turn on notifications inside Jotform.</p>
+      <ol>
+        <li>Open your form in Jotform.</li>
+        <li>Go to <strong>Settings</strong> → <strong>Emails</strong>.</li>
+        <li>Add a <strong>Notification Email</strong>.</li>
+        <li>Send it to <strong>jldhomesolutions@gmail.com</strong>.</li>
+      </ol>
+      <p class="small-note">That gives you instant lead alerts when someone submits their bills, panel photo, and property info.</p>
+    </div>
+  </div>
+</section>
 
-<div class="card">
-
-<ul>
-<li>Utility rebates may cover infrastructure costs</li>
-<li>Charging equipment incentives available</li>
-<li>Property owners may qualify for federal tax credits</li>
-</ul>
-
-<p>Complete the incentive form to see what your property qualifies for.</p>
-
-</div>
-
+<section>
+  <div class="cta-strip">
+    <div>
+      <h2 style="margin-bottom:8px">Ready to See If Your Property Qualifies?</h2>
+      <div class="small-note">Start the qualification form and upload your documents for review.</div>
+    </div>
+    <a class="cta" href="https://form.jotform.com/260674913599068" target="_blank">Open Qualification Form</a>
+  </div>
 </section>
 
 <footer>
-
-<p>JLD Home Solutions • Connecticut</p>
-<p>(203) 572-8680</p>
-
+  <p><strong>JLD Home Solutions</strong> • Connecticut</p>
+  <p>(203) 572-8680 • jldhomesolutions@gmail.com</p>
 </footer>
 
 <script>
-
 function calcROI(){
-
-let chargers=document.getElementById('chargers').value
-let sessions=document.getElementById('sessions').value
-let price=document.getElementById('price').value
-
-let revenue=chargers*sessions*price*30
-
-if(revenue){
-
-document.getElementById('roiResult').innerText="Estimated Monthly Revenue: $"+revenue.toLocaleString()
-
+  let chargers=Number(document.getElementById('chargers').value)
+  let sessions=Number(document.getElementById('sessions').value)
+  let price=Number(document.getElementById('price').value)
+  let revenue=chargers*sessions*price*30
+  document.getElementById('roiResult').innerText = revenue>0 ? 'Estimated Monthly Revenue: $'+revenue.toLocaleString() : ''
 }
 
+function checkIncentives(){
+  const propertyType=document.getElementById('propertyType').value
+  const utilityProvider=document.getElementById('utilityProvider').value
+  const panelReady=document.getElementById('panelReady').value
+  const box=document.getElementById('incentiveResult')
+
+  if(!propertyType || !utilityProvider || !panelReady){
+    box.style.display='block'
+    box.innerHTML='<h3>Complete all 3 fields</h3><p>Select the property type, utility provider, and panel condition first.</p>'
+    return
+  }
+
+  let message='<h3>Potential Qualification Review</h3>'
+  message+='<p><strong>Property Type:</strong> '+propertyType+'<br><strong>Utility:</strong> '+utilityProvider+'<br><strong>Panel Status:</strong> '+panelReady+'</p>'
+
+  if((propertyType==='Apartment Building' || propertyType==='Condo Association' || propertyType==='Commercial Parking Lot' || propertyType==='Mixed-Use Property') && (utilityProvider==='Eversource' || utilityProvider==='UI')){
+    message+='<p>This property may be a strong candidate for utility-related EV charging incentives and next-step review.</p>'
+  } else {
+    message+='<p>This property may still qualify for certain incentives or cost-reduction options, but a document review is recommended.</p>'
+  }
+
+  if(panelReady==='Older panel / may need upgrade'){
+    message+='<p>A service or panel upgrade may be needed before installation. Upload panel photos and bills so we can review your setup.</p>'
+  } else if(panelReady==='Not sure'){
+    message+='<p>Upload a panel photo so we can help verify readiness.</p>'
+  } else {
+    message+='<p>Your property may be closer to installation readiness, pending document review.</p>'
+  }
+
+  message+='<p><strong>Next step:</strong> Complete the qualification form and upload the requested photos and electric bills.</p>'
+  box.style.display='block'
+  box.innerHTML=message
 }
 
-let planner=document.getElementById("planner")
-
+let planner=document.getElementById('planner')
+let selectedCount=document.getElementById('selectedCount')
+let chargerCount=document.getElementById('chargerCount')
+let selected=0
 for(let i=0;i<30;i++){
-
-let spot=document.createElement("div")
-spot.classList.add("spot")
-
-spot.onclick=function(){
-
-spot.classList.toggle("active")
-
+  let spot=document.createElement('div')
+  spot.classList.add('spot')
+  spot.onclick=function(){
+    spot.classList.toggle('active')
+    selected=document.querySelectorAll('.spot.active').length
+    selectedCount.innerText=selected
+    chargerCount.innerText=Math.ceil(selected/2)
+  }
+  planner.appendChild(spot)
 }
 
-planner.appendChild(spot)
-
+function generateReport(){
+  const name=document.getElementById('reportName').value
+  const city=document.getElementById('reportCity').value
+  const spaces=document.getElementById('reportSpaces').value
+  const evSpaces=document.getElementById('reportEvSpaces').value
+  const out=document.getElementById('reportOutput')
+  if(!name || !city || !spaces || !evSpaces){
+    out.style.display='block'
+    out.innerHTML='<h3>Complete all report fields</h3><p>Enter the property name, city, parking spaces, and EV-ready spaces first.</p>'
+    return
+  }
+  out.style.display='block'
+  out.innerHTML='<h3>'+name+' EV Property Report</h3>'+
+  '<p><strong>City:</strong> '+city+'</p>'+
+  '<p><strong>Total Parking Spaces:</strong> '+spaces+'</p>'+
+  '<p><strong>Suggested EV-Ready Spaces:</strong> '+evSpaces+'</p>'+
+  '<p><strong>Next Step:</strong> Submit your electric bills and panel photo through the qualification form for a tailored review.</p>'
+  document.getElementById('printBtn').style.display='block'
 }
-
 </script>
-
 </body>
 </html>
